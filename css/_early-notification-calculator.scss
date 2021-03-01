@@ -1,0 +1,118 @@
+.page-title {
+    width: 100vw;
+    font-size: 20px;
+    // font-size: 1.25rem;
+    text-align: center;
+    background-color: grey;
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+}
+.early-notification-calculator-page {
+    --gap_early_page: .5rem;
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    // padding-top: 1.5rem;
+    max-width: 85vw;
+    margin: auto auto;
+
+    .mg_b_1-5 {
+        margin-bottom: 1.5rem;
+    }
+
+    .data-input {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .p-date{
+            color: var(--p_date_color);
+        }
+
+        .title {
+            font-size: 1.2rem;
+        }
+        .date {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--gap_early_page);
+            input {
+                padding: 0.25rem 0.5rem;
+                font-size: 1rem;
+                outline: none;
+                text-align: center;
+            }
+        }
+        .make-today-by-click {
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 0.25rem 0.5rem;
+            margin-top: var(--gap_early_page);
+            cursor: pointer;
+        }
+        .error_msg {
+            margin-bottom: 0.15rem;
+            padding: 0.2rem;
+            direction: rtl;
+            width: 100%;
+            text-align: center;
+            background-color: red;
+            transition: all 0.5s ease-in-out;
+            &.hide {
+                max-height: 0;
+                opacity: 0;
+            }
+            &.show {
+                opacity: 1;
+            }
+        }
+        .worker-type{
+            font-size: 1rem;
+            font-weight: 500;
+            outline: none;
+            margin-top: .2rem;
+            padding: .15rem;
+            option{
+                font-size: 10rem;
+            }
+            
+        }
+    }
+
+    .calc-btn {
+        border: 1px solid black;
+        border-radius: 30px;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background-color: #000;
+            color: #ffffff;
+        }
+    }
+
+    .full-width {
+        width: 100vw;
+    }
+    .results-wrapper {
+        direction: rtl;
+        // width: 50vw;
+        margin-top: 1.5rem;
+        .bold {
+            font-weight: 700;
+        }
+
+        .res {
+            span {
+                font-weight: 700;
+                color: #f17d3a;
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+// Fonts
+$poppins: "Poppins", sans-serif;
+$rubik: "Rubik", sans-serif;
+
+// Colors
+
+
+// Breakpoints
+$breakpoints: (
+    mobile: 767px,
+    tablet: 1023px,
+);
+
+@mixin breakpoint($size) {
+    $breakpoint-value: map-get($breakpoints, $size);
+
+    @media screen and (min-width: $breakpoint-value) {
+        @content;
+    }
+}
+@mixin breakpoint-less($size) {
+    $breakpoint-value: map-get($breakpoints, $size);
+
+    @media screen and (max-width: $breakpoint-value) {
+        @content;
+    }
+}
+
+// Keyframes
+// -> Fade in from LEFT
+// -> Fade in from RIGHT
+@keyframes logo-hover-animation {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

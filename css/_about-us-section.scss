@@ -1,0 +1,55 @@
+main section.about-us {
+    // min-height: 75vh;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 2px 5px rgba(#000, 0.1);
+
+    .text {
+        direction: rtl;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateY(150px);
+        opacity: 0;
+        transition: transform .4s ease, opacity .4s ease;
+        &.trigger-on{
+            transform: translateY(0);
+            opacity: 1;
+        }
+        h2 {
+            width: 40%;
+            font-size: clamp(1.75rem, 2.75vw, 2.5rem);
+            line-height: .8em;
+            margin-bottom: .5rem;
+            text-align: center;
+            @include breakpoint-less(tablet){
+                width: 60%;
+            }
+            @include breakpoint-less(mobile){
+                width: 80%;
+            }
+            span{
+                font-size: .6em;
+                font-weight: 500;
+            }
+        }
+        p {
+            width: 50%;
+            text-align: center;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.5em;
+
+            @include breakpoint-less(tablet){
+                width: 70%;
+            }
+            @include breakpoint-less(mobile){
+                width: 90%;
+            }
+        }
+    }
+}

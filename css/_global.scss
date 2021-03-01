@@ -1,0 +1,23 @@
+html{
+    --p_date_color: #909497;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $rubik;
+    scroll-behavior: smooth;
+}
+body {
+    overflow-x: hidden;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+.english {
+    font-family: $poppins;
+}
+section{
+    overflow: hidden;
+}

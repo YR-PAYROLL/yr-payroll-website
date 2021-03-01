@@ -1,0 +1,177 @@
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 15px rgba(#fff, 0.3);
+
+    @include breakpoint-less(tablet){
+        padding: 1rem 3rem;
+    }
+    @include breakpoint-less(mobile){
+        padding: 1rem 2rem;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        svg.yr-logo {
+            cursor: pointer;
+            width: clamp(100px, 20vw, 175px);
+            height: auto;
+            filter: drop-shadow(2px 2px 3px rgba(#fff, .5));
+            &:hover{
+                animation: logo-hover-animation .5s ease-in-out;
+            }
+            #main-vector {
+                fill: #fff !important;
+            }
+            #vector-stroke {
+                stroke: #fff !important;
+            }
+            #text {
+                fill: #fff !important;
+            }
+        }
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        opacity: 1;
+        z-index: 100;
+        @media screen and (max-width: 895px) {
+            position: absolute;
+            flex-direction: column;
+            right: 0rem;
+            left: 0rem;
+            background-color: #fff;
+            align-items: center;
+            padding: 2rem 2rem 2rem 4rem;
+            transform-origin: top;
+            transform: scaleY(0);
+            opacity: 0;
+            transition: transform .3s ease-in-out, opacity .4s ease-in-out;
+        }
+        &.open{
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        .nav-item {
+            direction: rtl;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            &:last-child {
+                margin-left: 3rem;
+                @media screen and (max-width: 895px) {
+                    margin: 0;
+                }
+            }
+            &:not(:first-child) {
+                margin-right: 3rem;
+                @media screen and (max-width: 895px) {
+                    margin: 0;
+                    margin-top: 2rem;
+                }
+            }
+            &:hover {
+                color: #b46c00;
+            }
+            @media screen and (max-width: 895px) {
+                color: #000000;
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    i.fa-bars{
+        color: #fff;
+        font-size: 1rem;
+        font-size: clamp(1rem, 5vw, 2rem);
+        display: none;
+        cursor: pointer;
+        transition: transform .25s ease-in-out;
+        &.clicked{
+            transform: rotate(90deg);
+        }
+        @media screen and (max-width: 895px) {
+            display: block;
+        }
+    }
+}
+
+header.calculator-page {
+    position: relative;
+    background: #000;
+    box-shadow: 0 0 0;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 1rem 4rem;
+    align-items: center;
+    justify-content: space-between;
+
+    @include breakpoint-less(tablet) {
+        padding: 1rem 5rem;
+    }
+    @include breakpoint-less(mobile) {
+        padding: 1rem 2rem;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        opacity: 1;
+        font-size: 1em;
+        @media screen and (max-width: 895px) {
+            position: absolute;
+            flex-direction: column;
+            right: 0rem;
+            left: 0rem;
+            background-color: #000;
+            align-items: center;
+            padding: 2rem 2rem 2rem 4rem;
+            transform-origin: top;
+            transform: scaleY(0);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.4s ease-in-out;
+        }
+        &.open {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        .nav-item {
+            direction: rtl;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            &:last-child {
+                margin-left: 3rem;
+                @media screen and (max-width: 895px) {
+                    margin: 0;
+                }
+            }
+            &:not(:first-child) {
+                margin-right: 3rem;
+                @media screen and (max-width: 895px) {
+                    margin: 0;
+                    margin-top: 2rem;
+                }
+            }
+            &:hover {
+                color: #b46c00;
+            }
+            @media screen and (max-width: 895px) {
+                color: #fff;
+                font-size: 1.25rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,157 @@
+main section.testimonials {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(#000, 0.1);
+
+    h2 {
+        font-size: clamp(2rem, 2.75vw, 2.75rem);
+        margin-bottom: 1rem;
+        direction: rtl;
+        letter-spacing: 1px;
+        transform: translateY(150px);
+        opacity: 0;
+        transition: transform .4s ease, opacity .4s ease;
+        @include breakpoint-less(tablet){
+            transform: translateY(125px);
+        }
+        @include breakpoint-less(mobile){
+            transform: translateY(100px);
+        }
+        &.trigger-on{
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    .quote-mark{
+        margin-bottom: 2.5rem;
+        width: clamp(40px, 5vw, 50px);
+        height: auto;
+        position: relative;
+        transform: translateY(150px);
+        opacity: 0;
+        transition: transform .4s ease, opacity .4s ease;
+        @include breakpoint-less(tablet){
+            transform: translateY(125px);
+        }
+        @include breakpoint-less(mobile){
+            transform: translateY(100px);
+        }
+        &.trigger-on{
+            transform: translateY(0);
+            opacity: 1;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        &::before{
+            content: '';
+            height: 3px;
+            width: 25vw;
+            position: absolute;
+            border-radius: 30px;
+            left: calc(100% + clamp(2rem, 3vw, 3rem));
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(to right, black, transparent);
+        }
+        &::after{
+            content: '';
+            height: 3px;
+            width: 25vw;
+            position: absolute;
+            border-radius: 30px;
+            right: calc(100% + clamp(2rem, 3vw, 3rem));
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(to left, black, transparent);
+        }
+    }
+
+    .testimonials-view {
+        width: 50vw;
+        box-shadow: 2px 2px 5px black;
+        position: relative;
+        border-radius: 20px;
+        transform: translateY(150px);
+        opacity: 0;
+        transition: transform .4s ease, opacity .4s ease;
+        direction: rtl;
+        overflow: hidden;
+        @include breakpoint-less(tablet){
+            transform: translateY(125px);
+        }
+        @include breakpoint-less(mobile){
+            transform: translateY(100px);
+        }
+        &.trigger-on{
+            transform: translateY(0);
+            opacity: 1;
+        }
+        @include breakpoint-less(tablet){
+            width: 65vw;
+        }
+        @include breakpoint-less(mobile){
+            width: 80vw;
+        }
+
+        .testimonials-wrapper {
+            display: flex;
+            position: relative;
+            transition: all .75s ease;
+            right: 0;
+            .testimonial {
+                position: relative;
+                padding: 2rem 5rem;
+                direction: rtl;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                @include breakpoint-less(tablet){
+                    padding: 1.75rem 3rem;
+                }
+                @include breakpoint-less(mobile){
+                    padding: 1.5rem 2.5rem;
+                }
+
+                p.text {
+                    font-size: clamp(1.1rem, 2vw, 1.4rem);
+                    font-style: italic;
+                    font-weight: 400;
+                    text-align: justify;
+
+                    &::before{
+                        content: '"';
+                    }
+                    &::after{
+                        content: '"';
+                    }
+                }
+
+                .profile{
+                    text-align: right;
+                    width: fit-content;
+                    margin: 0;
+                    margin-top: 1.75rem;
+                    margin-right: auto;
+                    p.writer{
+                        font-size: clamp(1.1rem, 2vw, 1.3rem);
+                        font-weight: 700;
+                        direction: rtl;
+                    }
+                    p.desc{
+                        font-size: clamp(1rem, 2vw, 1.2rem);
+                        font-weight: 300;
+                        direction: rtl;
+                    }
+                }
+            }
+        }
+    }
+}

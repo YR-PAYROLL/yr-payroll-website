@@ -1,0 +1,65 @@
+main.calculator-page {
+    --gap: 1rem;
+    &.brutto-neto {
+        padding-top: 1.5rem;
+        
+        hr {
+            margin: 2rem 0;
+        }
+        .bold {
+            font-weight: 700;
+        }
+        .page-title {
+            width: 100vw !important;
+            font-size: 20px;
+            text-align: center;
+            margin: 0rem !important;
+            margin-bottom: 1.5rem !important;
+            background-color: grey;
+        }
+        .forms-container {
+            padding: 0 3rem;
+            // display: grid;
+            // grid-template-columns: repeat(auto-fit, minmax(392px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            // gap: var(--gap);
+            width: 100vw;
+            margin: 0 auto;
+            .form {
+                text-align: center;
+                margin: .5rem auto;
+                padding: var(--gap);
+                // min-width: 400px;
+                * {
+                    font-size: 1rem;
+                    margin-top: .75rem;
+                }
+            }
+            select {
+                width: 150px;
+            }
+            input {
+                width: 140px;
+                text-align: center;
+            }
+        }
+        .results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            width: 75vw;
+            margin: 0 auto;
+            gap: var(--gap);
+            padding-bottom: 2rem;
+            .form2 {
+                text-align: center;
+                .res {
+                    margin-top: 0.5rem;
+                    * {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
