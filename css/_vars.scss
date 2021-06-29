@@ -6,7 +6,7 @@ $poppins: "Poppins", sans-serif;
 $rubik: "Rubik", sans-serif;
 
 // Colors
-
+$primary-clr: #b46c00;
 
 // Breakpoints
 $breakpoints: (
@@ -26,20 +26,5 @@ $breakpoints: (
 
     @media screen and (max-width: $breakpoint-value) {
         @content;
-    }
-}
-
-// Keyframes
-// -> Fade in from LEFT
-// -> Fade in from RIGHT
-@keyframes logo-hover-animation {
-    0%{
-        transform: scale(1);
-    }
-    50%{
-        transform: scale(1.1);
-    }
-    100%{
-        transform: scale(1);
     }
 }
