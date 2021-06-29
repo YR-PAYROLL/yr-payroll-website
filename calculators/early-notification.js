@@ -55,84 +55,84 @@ function makeToday() {
     calc_year.value = yyyy;
 }
 
-function checkStartDate() {
-    var err_msg = document.querySelector(".start-work .error_msg");
-    var start_dd = document.querySelector('#start-day');
-    var start_mm = document.querySelector('#start-month');
-    var start_yyyy = document.querySelector('#start-year');
+// function checkStartDate() {
+//     var err_msg = document.querySelector(".start-work .error_msg");
+//     var start_dd = document.querySelector('#start-day');
+//     var start_mm = document.querySelector('#start-month');
+//     var start_yyyy = document.querySelector('#start-year');
 
-    start_dd = parseInt(start_dd.value)
-    start_mm = parseInt(start_mm.value)
-    start_yyyy = parseInt(start_yyyy.value)
+//     start_dd = parseInt(start_dd.value)
+//     start_mm = parseInt(start_mm.value)
+//     start_yyyy = parseInt(start_yyyy.value)
 
-    var today_calc_helper = new Date();
-    var today_yyyy = today_calc_helper.getFullYear();
+//     var today_calc_helper = new Date();
+//     var today_yyyy = today_calc_helper.getFullYear();
 
-    var show_checker = false;
-    var max_dd = month_dict[start_mm];
+//     var show_checker = false;
+//     var max_dd = month_dict[start_mm];
 
-    if (start_yyyy > today_yyyy || max_dd < start_dd || start_mm > 12 || start_mm < 1 || start_dd < 1) {
-        show_checker = true;
-    }
+//     if (start_yyyy > today_yyyy || max_dd < start_dd || start_mm > 12 || start_mm < 1 || start_dd < 1) {
+//         show_checker = true;
+//     }
 
-    if (show_checker) {
-        err_msg.classList.remove('hide');
-        err_msg.classList.add('show');
-    } else {
-        err_msg.classList.remove('show');
-        err_msg.classList.add('hide');
-    }
+//     if (show_checker) {
+//         err_msg.classList.remove('hide');
+//         err_msg.classList.add('show');
+//     } else {
+//         err_msg.classList.remove('show');
+//         err_msg.classList.add('hide');
+//     }
 
-}
+// }
 
-function checkCalcDate() {
-    var err_msg = document.querySelector(".calc-date .error_msg");
-    var start_dd = document.querySelector('#calc-day');
-    var start_mm = document.querySelector('#calc-month');
-    var start_yyyy = document.querySelector('#calc-year');
+// function checkCalcDate() {
+//     var err_msg = document.querySelector(".calc-date .error_msg");
+//     var start_dd = document.querySelector('#calc-day');
+//     var start_mm = document.querySelector('#calc-month');
+//     var start_yyyy = document.querySelector('#calc-year');
 
-    start_dd = parseInt(start_dd.value)
-    start_mm = parseInt(start_mm.value)
-    start_yyyy = parseInt(start_yyyy.value)
+//     start_dd = parseInt(start_dd.value)
+//     start_mm = parseInt(start_mm.value)
+//     start_yyyy = parseInt(start_yyyy.value)
 
-    var today_calc_helper = new Date();
-    var today_yyyy = today_calc_helper.getFullYear();
+//     var today_calc_helper = new Date();
+//     var today_yyyy = today_calc_helper.getFullYear();
 
-    var show_checker = false;
-    var max_dd = month_dict[start_mm];
+//     var show_checker = false;
+//     var max_dd = month_dict[start_mm];
 
-    if (start_yyyy > today_yyyy || max_dd < start_dd || start_mm > 12 || start_mm < 1 || start_dd < 1) {
-        show_checker = true;
-    }
+//     if (start_yyyy > today_yyyy || max_dd < start_dd || start_mm > 12 || start_mm < 1 || start_dd < 1) {
+//         show_checker = true;
+//     }
 
-    if (show_checker) {
-        err_msg.classList.remove('hide');
-        err_msg.classList.add('show');
-    } else {
-        err_msg.classList.remove('show');
-        err_msg.classList.add('hide');
-    }
+//     if (show_checker) {
+//         err_msg.classList.remove('hide');
+//         err_msg.classList.add('show');
+//     } else {
+//         err_msg.classList.remove('show');
+//         err_msg.classList.add('hide');
+//     }
 
-}
+// }
 
 function finalCalc() {
-    checkStartDate();
-    checkCalcDate();
+    // checkStartDate();
+    // checkCalcDate();
 
     var yyyy_delta = 0;
     var mm_delta = 0;
     var senior_in_months = 0;
 
     // Start
-    var start_dd = document.querySelector('#start-day').value;
-    var start_mm = document.querySelector('#start-month').value - 1;
-    var start_yyyy = document.querySelector('#start-year').value;
+    var start_dd = document.querySelector('#start-days').value;
+    var start_mm = document.querySelector('#start-months').value-1;
+    var start_yyyy = document.querySelector('#start-years').value;
     var start_date = new Date(parseInt(start_yyyy), parseInt(start_mm), parseInt(start_dd));
-
     // Calc Date
-    var calc_dd = document.querySelector('#calc-day').value;
-    var calc_mm = document.querySelector('#calc-month').value - 1;
-    var calc_yyyy = document.querySelector('#calc-year').value;
+    var calc_dd = document.querySelector('#end-days').value;
+    var calc_mm = document.querySelector('#end-months').value-1;
+    var calc_yyyy = document.querySelector('#end-years').value;
+    var calc_date = new Date(parseInt(calc_yyyy), parseInt(calc_mm), parseInt(calc_dd));
 
     // Worker Type -> 1 = Monthly, 2 = Dayly/Hourly
     var worker_type = document.querySelector('.worker-type').value;
@@ -163,11 +163,8 @@ function finalCalc() {
         end_mm = `0${end_mm}`
     }
     document.querySelector('#end-date-of-work-res').innerText = `${end_dd}/${end_mm}/${end_yyyy}`;
+    document.querySelector(".result-container").classList.add("open");
 }
-
-setInterval(() => {
-    finalCalc();
-}, 100);
 
 function makeNumberForPrint(n, b, st) {
     if (n == "" || n == NaN) {
@@ -182,24 +179,15 @@ function makeNumberForPrint(n, b, st) {
     }
 }
 
-function writeStartDate() {
-    var dd_start = makeNumberForPrint(document.querySelector("#start-day").value, false, "dd");
-    var mm_start = makeNumberForPrint(document.querySelector("#start-month").value, false, "mm");
-    var yyyy_start = makeNumberForPrint(document.querySelector("#start-year").value, true, "yyyy");
+// RESULTS VIEW
+var close_btn = document.querySelector(".result-container .close-btn");
 
-    var start_date_p = document.querySelector("#start-date-p");
-    start_date_p.innerText = `${dd_start} / ${mm_start} / ${yyyy_start}`
-}
-function writeCalcDate() {
-    var dd_calc = makeNumberForPrint(document.querySelector("#calc-day").value, false, "dd");
-    var mm_calc = makeNumberForPrint(document.querySelector("#calc-month").value, false, "mm");
-    var yyyy_calc = makeNumberForPrint(document.querySelector("#calc-year").value, true, "yyyy");
-    
-    var calc_date_p = document.querySelector("#calc-date-p");
-    calc_date_p.innerText = `${dd_calc} / ${mm_calc} / ${yyyy_calc}`
-}
+close_btn.addEventListener("click", ()=>{
+    document.querySelector(".result-container").classList.remove("open");
+})
 
-setInterval(() => {
-    writeStartDate();
-    writeCalcDate();
-}, 10);
+document.onkeyup = function(e) {
+    if (e.key == 'Escape') {
+        document.querySelector(".result-container").classList.remove("open");
+    }
+}

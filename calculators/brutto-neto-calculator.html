@@ -26,16 +26,21 @@
     <meta name="msapplication-TileImage" content="/imgs/YR-favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
-        integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script> -->
+    <!-- Scripts -->
+    <script src="/scripts/fontawesome.js" defer></script>
+    <script src="/scripts/nav-bar-controller.js" defer></script>
+    <script src="/scripts/calc.js" defer></script>
+    <!-- <script src="/scripts/fix-calculator-page.js" defer></script> -->
+    <script src="/scripts/fix-main-size.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
+
 </head>
 
 <body>
-    <header class="calculator-page">
-        <div class="logo">
+    <header class="inner-page">
+        <a href="/" class="logo">
             <svg class="yr-logo" width="175" height="110" viewBox="0 0 175 110" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d)">
@@ -77,137 +82,223 @@
                 </defs>
             </svg>
 
-        </div>
-        <nav>
-            <a href="/" class="nav-item">
-                דף הבית
+            <p class="slogen">
+                שירותי חשבות שכר <span>במיקור חוץ</span>
+            </p>
+        </a>
+
+        <nav class="hide">
+            <a href="/" class="nav-item scroll-btn">
+                בית
+            </a>
+            <a href="/#about-us-section" class="nav-item scroll-btn">
+                מי אנחנו?
+            </a>
+            <a href="/#why-us-section" class="nav-item scroll-btn">
+                למה אנחנו?
+            </a>
+            <a href="/#services-section" class="nav-item scroll-btn">
+                השירותים שלנו
+            </a>
+            <a href="/#testimonials-section" class="nav-item scroll-btn">
+                המלצות
             </a>
             <a href="/calculators.html" class="nav-item">
                 מחשבוני שכר
             </a>
+            <a href="/#contact-us-section" class="nav-item scroll-btn">
+                צרו קשר
+            </a>
+
+            <div class="social">
+                <a href="#" class="social"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social"><i class="fas fa-phone"></i></a>
+                <a href="#" class="social"><i class="fas fa-envelope"></i></a>
+            </div>
         </nav>
+
         <i class="fas fa-bars"></i>
     </header>
+
     <main class="calculator-page brutto-neto all-calculators">
-        <p class="page-title">מחשבון
-            שכר |
-            ברוטו - נטו | עלות מעסיק (מעודכן לשנת 2020)</p>
+        <p class="page-title">
+            מחשבון ברוטו-נטו | עובד מעביד (מעודכן לשנת 2021)
+        </p>
         <div class="forms-container">
             <div class="form">
-                <label>שכר בסיס</label>
-                <input id="basis" onkeyup="HishtalmutSelect(), GemelSelect()"
-                    oninput="HishtalmutSelect(), GemelSelect()" type="number"><br>
-                <label>החזרי הוצאות</label>
-                <input id="lolegemel" type="number"><br>
-                <label>שווי רכב</label>
-                <input id="zkifatRecev" type="number"><br>
-                <label>שווי הטבה</label>
-                <input id="zkifot" type="number"><br>
-                <label>נקודות זיכוי</label>
-                <input id="nzikoi" type="number"><br>
+                <div class="form-item">
+                    <label>שכר בסיס</label>
+                    <input id="basis" onkeyup="HishtalmutSelect(), GemelSelect()"
+                        oninput="HishtalmutSelect(), GemelSelect()" type="number">
+                </div>
+                <div class="form-item">
+                    <label>החזרי הוצאות</label>
+                    <input id="lolegemel" type="number">
+                </div>
+                <div class="form-item">
+                    <label>שווי רכב</label>
+                    <input id="zkifatRecev" type="number">
+                </div>
+                <div class="form-item">
+                    <label>שווי הטבה</label>
+                    <input id="zkifot" type="number">
+                </div>
+                <div class="form-item">
+                    <label>נקודות זיכוי</label>
+                    <input id="nzikoi" type="number" step=".5">
+                </div>
             </div>
             <div class="form">
-                <label style="width: 96px;">קופת גמל</label>
-                <select oninput="GemelSelect()" id="gemelSelect">
-                    <option value="1">לפי שכר בסיס</option>
-                    <option value="2">עד התקרה בחוק</option>
-                    <option value="3">מגבלת סכום</option>
-                </select>
-                <input id="tikralegemel" type="number" readonly><br>
-                <label>אחוז עובד</label>
-                <input id="ahuzoved" type="number"><br>
-                <label>תגמולי מעביד</label>
-                <input id="ahuzgemelmaavid" type="number"><br>
-                <label>אחוז פיצויים</label>
-                <input id="ahuzpizuim" type="number"><br>
-                <label></label>
+                <div class="form-item long">
+                    <label style="width: 96px;">קופת גמל</label>
+                    <select oninput="GemelSelect()" id="gemelSelect">
+                        <option value="1">לפי שכר בסיס</option>
+                        <option value="2">עד התקרה בחוק</option>
+                        <option value="3">מגבלת סכום</option>
+                    </select>
+                    <input id="tikralegemel" type="number" readonly>
+                </div>
+                <div class="form-item">
+                    <label>אחוז עובד</label>
+                    <input id="ahuzoved" type="number">
+                </div>
+
+                <div class="form-item">
+                    <label>תגמולי מעביד</label>
+                    <input id="ahuzgemelmaavid" type="number">
+                </div>
+                <div class="form-item">
+                    <label>אחוז פיצויים</label>
+                    <input id="ahuzpizuim" type="number">
+                </div>
             </div>
+
             <div class="form">
-                <label style="width: 96px;">קרן השתלמות</label>
-                <select oninput="HishtalmutSelect()" id="hishtalmutSelect">
-                    <option value="1">לפי שכר בסיס</option>
-                    <option value="2">עד תקרה פטורה</option>
-                    <option value="3">מגבלת סכום</option>
-                </select>
-                <input id="tikralhishtalmut" type="number" readonly><br>
-                <label>אחוז עובד</label>
-                <input id="ahuzhishtalmutoved" type="number"><br>
-                <label>אחוז מעביד</label>
-                <input id="ahuzhishtalmutmaavid" type="number"><br>
-                <label style="width: 196px;"></label>
-                <label></label><br>
+                <div class="form-item long">
+                    <label style="width: 96px;">קרן השתלמות</label>
+                    <select oninput="HishtalmutSelect()" id="hishtalmutSelect">
+                        <option value="1">לפי שכר בסיס</option>
+                        <option value="2">עד תקרה פטורה</option>
+                        <option value="3">מגבלת סכום</option>
+                    </select>
+                    <input id="tikralhishtalmut" type="number" readonly>
+                </div>
+                <div class="form-item">
+                    <label>אחוז עובד</label>
+                    <input id="ahuzhishtalmutoved" type="number">
+                </div>
+                <div class="form-item">
+                    <label>אחוז מעביד</label>
+                    <input id="ahuzhishtalmutmaavid" type="number">
+                </div>
+            </div>
+            
+        </div>
+        <p onclick="calc()" class="calc-btn">חישוב</p>
+
+        <div class="result-container">
+            <span class="close-btn"></span>
+            <div class="box">
+                <div class="results">
+                    <div class="form2">
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">מס הכנסה</p>
+                            <p id="mashacnasa"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">ביטוח לאומי</p>
+                            <p id="bleumioved"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">ביטוח בריאות</p>
+                            <p id="bbrioot"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">קופת גמל</p>
+                            <p id="gemeloved"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">קרן השתלמות</p>
+                            <p id="hishtalmutoved"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">נטו</p>
+                            <p style="color: green;" id="neto"></p>
+                        </div>
+                    </div>
+                    <div class="form2">
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">תשלומים לעובד</p>
+                            <p id="tashlumim"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">ביטוח לאומי מעביד</p>
+                            <p id="bleumimaavid"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">תגמולי מעביד</p>
+                            <p id="gemelmaavid"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">פיצויים</p>
+                            <p id="pizuim"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">השתלמות מעביד</p>
+                            <p id="hishtalmutmaavid"></p>
+                        </div>
+                        <div class="res ta-r form-item mt">
+                            <p class="bold">סה"כ עלות</p>
+                            <p style="color: blue;" id="alut"></p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <hr>
-        <div class="results">
-            <div class="form2">
-                <div class="res">
-                    <p class="bold">מס הכנסה</p>
-                    <p id="mashacnasa"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">ביטוח לאומי</p>
-                    <p id="bleumioved"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">ביטוח בריאות</p>
-                    <p id="bbrioot"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">קופת גמל</p>
-                    <p id="gemeloved"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">קרן השתלמות</p>
-                    <p id="hishtalmutoved"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">נטו</p>
-                    <p style="color: green;" id="neto"></p>
-                </div>
-            </div>
-            <div class="form2">
-                <div class="res">
-                    <p class="bold">תשלומים לעובד</p>
-                    <p id="tashlumim"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">ביטוח לאומי מעביד</p>
-                    <p id="bleumimaavid"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">תגמולי מעביד</p>
-                    <p id="gemelmaavid"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">פיצויים</p>
-                    <p id="pizuim"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">השתלמות מעביד</p>
-                    <p id="hishtalmutmaavid"></p>
-                </div>
-                <div class="res">
-                    <p class="bold">סה"כ עלות</p>
-                    <p style="color: blue;" id="alut"></p>
-                </div>
-            </div>
+
+        
+
+        <div class="more-calculators">
+            <a href="/calculators/brutto-neto-calculator.html" class="calc-link">
+                מחשבון ברוטו-נטו
+            </a>
+            <a href="/calculators/early-notification-calculator.html" class="calc-link">
+                מחשבון הודעה מוקדמת
+            </a>
         </div>
     </main>
 
     <footer>
-        <div class="credit">
-            <p>
-                האתר נבנה ועוצב על ידי <a href="https://tal-mekler.com">טל מקלר - Tal Mekler
-                    Developer</a>
-            </p>
-        </div>
+        <ul>
+            <a class="scroll-btn" href="/#hero-section">
+                <li>י.ר שירותי שכר</li>
+            </a>
+            <a class="scroll-btn" href="/#services-section">
+                <li>שירותי שכר חיצוני</li>
+            </a>
+            <a class="scroll-btn" href="/#services-section">
+                <li>שירותי מערכת נוכחות</li>
+            </a>
+            <a href="/calculators.html">
+                <li>מחשבוני שכר</li>
+            </a>
+            <a class="scroll-btn" href="/#testimonials-section">
+                <li>המלצות</li>
+            </a>
+            <a class="scroll-btn" href="/#contact-us-section">
+                <li>צור קשר</li>
+            </a>
+        </ul>
     </footer>
 
+    <div class="credit">
+        <p>
+            האתר נבנה ועוצב על ידי <a href="https://tal-mekler.com">טל מקלר - Tal Mekler
+                Developer</a>
+        </p>
+    </div>
+
 </body>
-<script src="/scripts/fontawesome.js"></script>
-<script src="/scripts/nav-bar-controller.js"></script>
-<script src="/scripts/calc.js"></script>
-<script src="/scripts/fix-calculator-page.js"></script>
 
 </html>
